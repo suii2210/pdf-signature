@@ -1,0 +1,445 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600&family=Space+Grotesk:wght@400;600&display=swap");
+
+:root {
+  --ink: #fff;
+  --muted: rgba(255, 255, 255, 0.65);
+  --accent: #fff;
+  --accent-soft: #fff;
+  --teal: #fff;
+  --paper: #000;
+  --panel: #000;
+  --border: rgba(255, 255, 255, 0.25);
+  --shadow: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: #000;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button,
+input,
+select {
+  font-family: inherit;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 24px;
+  padding: 24px;
+}
+
+.toolbar {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  box-shadow: var(--shadow);
+}
+
+.toolbar header h1 {
+  font-family: "Source Serif 4", serif;
+  font-size: 28px;
+  margin: 6px 0 10px;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 12px;
+  color: var(--muted);
+  margin: 0;
+}
+
+.subtitle {
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.field-list {
+  display: grid;
+  gap: 12px;
+}
+
+.field-tile {
+  background: var(--paper);
+  border: 1px dashed var(--border);
+  border-radius: 16px;
+  padding: 12px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: grab;
+}
+
+.field-tile span:first-child {
+  font-weight: 600;
+}
+
+.field-pill {
+  background: #fff;
+  color: #000;
+  border-radius: 999px;
+  font-size: 12px;
+  padding: 4px 10px;
+}
+
+.pdf-upload {
+  border: 1px dashed var(--border);
+  border-radius: 16px;
+  padding: 12px;
+  background: #000;
+  display: grid;
+  gap: 8px;
+  text-align: center;
+}
+
+.pdf-upload.dragging {
+  border-color: #fff;
+  border-style: solid;
+  box-shadow: 0 0 0 2px #fff;
+}
+
+.pdf-upload input {
+  display: none;
+}
+
+.pdf-upload label {
+  justify-self: center;
+  border-radius: 999px;
+  padding: 6px 14px;
+  background: #fff;
+  color: #000;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pdf-upload-hint {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.pdf-upload-name {
+  font-size: 12px;
+  color: #fff;
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.signature-pad {
+  display: grid;
+  gap: 12px;
+}
+
+.signature-canvas {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: #000;
+  padding: 8px;
+  position: relative;
+}
+
+.signature-canvas.dragging {
+  border-color: #fff;
+  box-shadow: 0 0 0 2px #fff;
+}
+
+.signature-canvas canvas {
+  width: 100%;
+  height: 140px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid #000;
+  touch-action: none;
+}
+
+.signature-hint {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  color: #000;
+  font-size: 12px;
+}
+
+.signature-drop-hint {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  color: #000;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.signature-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.signature-actions button:not(.ghost) {
+  border: 1px solid #fff;
+  border-radius: 12px;
+  padding: 8px 12px;
+  background: #fff;
+  color: #000;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.signature-actions .signature-upload {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid #fff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.signature-actions .signature-upload input {
+  display: none;
+}
+
+.ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+
+.actions button {
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid #fff;
+  background: #fff;
+  color: #000;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.actions button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.status {
+  color: var(--muted);
+  margin: 8px 0 0;
+}
+
+.coord-panel {
+  background: #000;
+  border-radius: 16px;
+  border: 1px solid #fff;
+  padding: 12px;
+  font-size: 12px;
+  color: #fff;
+  max-height: 220px;
+  overflow: auto;
+}
+
+.viewer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.viewer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.viewer-header h2 {
+  margin: 0;
+  font-family: "Source Serif 4", serif;
+  font-size: 24px;
+}
+
+.viewer-header p {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+
+.viewer-meta {
+  display: flex;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.pdf-shell {
+  background: #000;
+  border-radius: 24px;
+  padding: 20px;
+  border: 1px solid #fff;
+  box-shadow: var(--shadow);
+}
+
+.page-stack {
+  position: relative;
+  margin: 0 auto;
+  animation: rise 0.6s ease-out;
+}
+
+.field-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px dashed #000;
+  pointer-events: auto;
+}
+
+.field-box {
+  border: 1px solid #000;
+  border-radius: 10px;
+  background: #fff;
+  color: #000;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.field-box.selected {
+  box-shadow: 0 0 0 2px #000;
+}
+
+.field-handle {
+  background: #000;
+  padding: 4px 8px;
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: grab;
+}
+
+.field-label {
+  text-transform: capitalize;
+  font-weight: 600;
+  color: #fff;
+}
+
+.field-delete {
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.field-body {
+  flex: 1;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #000;
+}
+
+.field-body img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.field-body input[type="text"],
+.field-body input[type="date"] {
+  width: 100%;
+  border: 1px solid #000;
+  border-radius: 8px;
+  padding: 6px;
+  background: #fff;
+  color: #000;
+}
+
+.radio-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #000;
+  font-size: 12px;
+}
+
+.image-field input {
+  display: none;
+}
+
+.image-field {
+  width: 100%;
+  height: 100%;
+  border: 1px dashed #000;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 12px;
+  background: #fff;
+  color: #000;
+}
+
+.image-field img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.skeleton {
+  padding: 20px;
+  text-align: center;
+  color: var(--muted);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 980px) {
+  .app {
+    grid-template-columns: 1fr;
+  }
+
+  .toolbar {
+    order: 2;
+  }
+
+  .viewer-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
