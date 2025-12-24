@@ -13,7 +13,16 @@ import { normalizedToPdfBox } from "./lib/coords.js";
 dotenv.config();
 
 const app = express();
-app.use(cors());
+const corsOrigin = process.env.CORS_ORIGIN;
+if (corsOrigin) {
+  const origins = corsOrigin
+    .split(",")
+    .map((origin) => origin.trim())
+    .filter(Boolean);
+  app.use(cors({ origin: origins }));
+} else {
+  app.use(cors());
+}
 app.use(express.json({ limit: "25mb" }));
 
 const __filename = fileURLToPath(import.meta.url);
